@@ -1,5 +1,5 @@
 # AppToDoList
 ## Layout do sistema
-![Tela inicial](images\fotoApp.PNG)
+![Tela inicial](images/fotoApp.PNG)
 
-![Tela de castro](images\fotoCadastroApp.PNG)
+![Tela de castro](images/fotoCadastroApp.PNG)
