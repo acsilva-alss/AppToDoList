@@ -18,29 +18,18 @@ module.exports = {
             return res.status(400).send({ error: 'Error loading users '+ err});
         } 
     },
-    async UserQuery(req, res){
-        try{
-            const userId = req.params.userId;
-            const user = await User.findById(userId);
-            if(!user){
-                return req.status(400).res({ error: 'Error, user not exist'});
-            }
-            return res.send({ user });
-        }catch(err){
-            return res.status(400).send({error: 'Error querying user '+ err});
-        }
-    },
     async UserEdit(req, res){
         try{
-            const userEdited = req.params;
-            const user = User.findByIdAndUpdate(userEdited.userId, {
-                email: userEdited.email,
-                name: userEdited.name
+            const {email, name, password} = req.body;
+            const userId = req.params.userId
+            const user = User.findByIdAndUpdate(userId, {
+                email,
+                password,
+                name
             }, {new: true});
-
             return res.send({ user });
-        }catch{
-            return res.status(400).send({error: 'Error editing user'});
+        }catch(err){
+            return res.status(400).send({error: 'Error editing user' + err});
         }
     },
     async UserDelete(req, res){
